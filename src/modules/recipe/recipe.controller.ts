@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Post, Query } from "@nestjs/common";
 import { RecipeService } from './recipe.service'
 import { FindOneRecipeDto, RemoveRecipeDto, AddRecipeDto } from "./dto";
 
@@ -12,8 +12,8 @@ export class RecipeController {
   }
 
   @Get('by-name')
-  getRecipeByOneName(@Body() dto: FindOneRecipeDto) {
-    return this.recipeService.findName(dto.recipeName)
+  getRecipeByOneName(@Query('recipeName') recipeName: string) {
+    return this.recipeService.findName(recipeName)
   }
 
   @Get('by-all')
@@ -22,13 +22,13 @@ export class RecipeController {
   }
 
   @Post()
-  addRecipe(@Body() dto: AddRecipeDto) {
-    return this.recipeService.addRecipe(dto.recipeName)
+  addRecipe(@Query('recipeName') recipeName: string) {
+    return this.recipeService.addRecipe(recipeName)
   }
 
   @Delete()
-  removeRecipe(@Body() dto: RemoveRecipeDto) {
-    return this.recipeService.removeRecipe(dto.recipesId)
+  removeRecipe(@Query('recipesId') recipesId: number) {
+    return this.recipeService.removeRecipe(recipesId)
   }
 
 }

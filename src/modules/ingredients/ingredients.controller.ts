@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Patch, Post } from "@nestjs/common"
+import { Body, Controller, Delete, Get, Patch, Post, Query } from "@nestjs/common";
 import { IngredientsService } from "./ingredients.service"
 import {
   AddIngredientDto,
@@ -28,18 +28,17 @@ export class IngredientsController {
   }
 
   @Post()
-  addIngredient(@Body() dto: AddIngredientDto) {
-    return this.ingredientsService.addIngredients(dto.ingredientName)
+  addIngredient(@Query('ingredientName')ingredientName: string) {
+    return this.ingredientsService.addIngredients(ingredientName)
   }
 
   @Delete()
-  removeIngredient(@Body() dto: RemoveIngredientDto) {
-    return this.ingredientsService.removeIngredients(dto.ingredientId)
+  removeIngredient(@Query( 'ingredientsId') ingredientsId: number) {
+    return this.ingredientsService.removeIngredients(ingredientsId)
   }
 
   @Patch()
   editIngredient(@Body() dto: EditIngredientDto) {
     return this.ingredientsService.editIngredients(dto.ingredientId, dto.newIngredientName)
   }
-
 }

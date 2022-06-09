@@ -5,5 +5,4 @@ export class RemoveRecipeDto {
   @MaxLength(11)
   @IsAlphanumeric()
   readonly recipesId: number
-
 }

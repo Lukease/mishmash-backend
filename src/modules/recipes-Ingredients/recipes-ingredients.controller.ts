@@ -1,6 +1,6 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Post, Query } from "@nestjs/common";
 import { RecipesIngredientsService } from "./recipes-ingredients.service";
-import { AddRecipeIngredientsDto, RemoveRecipeIngredientsDto, FindOneRecipeIngredientsDto, FindRecipeDto } from "./dto";
+import { AddRecipeIngredientsDto, FindOneRecipeIngredientsDto, FindRecipeDto } from "./dto";
 import { RecipeService } from "../recipe/recipe.service";
 
 @Controller('recipesIngredients')
@@ -16,19 +16,31 @@ export class RecipesIngredientsController {
   }
 
   @Get('by-ingredients')
-  async getRecipeByIngredients(@Body() dto: FindRecipeDto) {
-    const recipe = await this.recipesIngredientsService.findAllRecipes(dto.ingredientsId)
+  async getRecipeByIngredients(@Query('ingredientsId') ingredientsId: Array<number>) {
+    const recipe = await this.recipesIngredientsService.findAllRecipes(ingredientsId)
 
-    const recipeArray =await Promise.all( recipe.map( async recipe => {
+    return await Promise.all(recipe.map(async recipe => {
       return await this.recipeService.findId(recipe)
     }))
+  }
 
-    return recipeArray
+  @Get('by-one-ingredients')
+  async getRecipeByOneIngredients(@Query('ingredientsId') ingredientsId: number) {
+    const recipe = await this.recipesIngredientsService.findOneRecipes(ingredientsId)
+
+    return await Promise.all(recipe.map(async recipe => {
+      return await this.recipeService.findId(recipe)
+    }))
   }
 
   @Get('by-id')
   getRecipeIngredientsByOneName(@Body() dto: FindOneRecipeIngredientsDto) {
     return this.recipesIngredientsService.findName(dto.recipesIngredientsId)
+  }
+
+  @Get('by-recipe')
+  getRecipeIngredientsByRecipe(@Query('recipeId') recipeId: number) {
+    return this.recipesIngredientsService.findRecipeIngredient(recipeId)
   }
 
   @Post()
@@ -37,8 +49,8 @@ export class RecipesIngredientsController {
   }
 
   @Delete()
-  removeRecipeIngredients(@Body() dto: RemoveRecipeIngredientsDto) {
-    return this.recipesIngredientsService.removeRecipeIngredients(dto.recipesIngredientsId)
+  removeRecipeIngredients(@Query('recipesIngredientsId') recipesIngredientsId: number ) {
+    return this.recipesIngredientsService.removeRecipeIngredients(recipesIngredientsId)
   }
 
 }

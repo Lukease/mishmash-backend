@@ -46,8 +46,8 @@ export class RecipeService {
             recipeName: item.recipeName,
             ingredients: [
               {
-                ingredientsId: item.ingredientsId,
-                ingredientsName: item.ingredientsName
+                ingredientId: item.ingredientsId,
+                ingredientName: item.ingredientsName
               }
             ]
           }];
@@ -65,8 +65,6 @@ export class RecipeService {
         return ingredientInRecipe;
       });
     }, [] as Array<OneRecipe>);
-
-    // return recipe;
   }
 
   addRecipe(name: string) {
