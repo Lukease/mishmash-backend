@@ -1,6 +1,5 @@
-import { Body, Controller, Delete, Get, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common'
 import { RecipeService } from './recipe.service'
-import { FindOneRecipeDto, RemoveRecipeDto, AddRecipeDto } from "./dto";
 
 @Controller('recipes')
 export class RecipeController {
@@ -30,5 +29,4 @@ export class RecipeController {
   removeRecipe(@Query('recipesId') recipesId: number) {
     return this.recipeService.removeRecipe(recipesId)
   }
-
 }

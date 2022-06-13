@@ -1,14 +1,14 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Ingredient } from "./lib/entity/ingredients.entity";
-import { Recipe } from "./lib/entity/recipes.entity";
-import { RecipesIngredients } from "./lib/entity/recipes-Ingredients.entity";
-import { Connection } from "typeorm";
-import { IngredientsModule } from "./modules/ingredients";
-import { RecipeModule } from "./modules/recipe";
-import { RecipesIngredientsModule } from "./modules/recipes-Ingredients";
+import { Module } from '@nestjs/common'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { Ingredient } from './lib/entity'
+import { Recipe } from './lib/entity'
+import { RecipesIngredients } from './lib/entity'
+import { Connection } from 'typeorm'
+import { IngredientsModule } from './modules/ingredients'
+import { RecipeModule } from './modules/recipe'
+import { RecipesIngredientsModule } from './modules/recipes-Ingredients'
 
 @Module({
   imports: [

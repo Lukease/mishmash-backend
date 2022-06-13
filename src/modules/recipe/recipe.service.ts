@@ -1,11 +1,11 @@
-import { Injectable } from "@nestjs/common";
-import { Recipe } from "../../lib/entity";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { RecipesIngredients } from "../../lib/entity";
-import { Ingredient } from "../../lib/entity";
-import { RecipeTypeDao } from "./dao";
-import { Ingredients, OneRecipe } from "./types";
+import { Injectable } from '@nestjs/common'
+import { Recipe } from '../../lib/entity'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { RecipesIngredients } from '../../lib/entity'
+import { Ingredient } from '../../lib/entity'
+import { RecipeTypeDao } from './dao'
+import { OneRecipe } from './types'
 
 @Injectable()
 export class RecipeService {
@@ -16,15 +16,15 @@ export class RecipeService {
   }
 
   findAll() {
-    return this.recipeRepository.find();
+    return this.recipeRepository.find()
   }
 
   findName(name: string) {
-    return this.recipeRepository.findOne({ name: name });
+    return this.recipeRepository.findOne({ name: name })
   }
 
   findId(id: number) {
-    return this.recipeRepository.findOne({ recipesId: id });
+    return this.recipeRepository.findOne({ recipesId: id })
   }
 
   async findRecipe() {
@@ -36,7 +36,7 @@ export class RecipeService {
       .getRawMany<RecipeTypeDao>();
 
     return recipe.reduce((acc, item) => {
-      const elementInAcc = acc.find(element => element.recipeId === item.recipesId);
+      const elementInAcc = acc.find(element => element.recipeId === item.recipesId)
 
       if (!elementInAcc) {
         return [
@@ -62,16 +62,16 @@ export class RecipeService {
             })
           };
         }
-        return ingredientInRecipe;
-      });
-    }, [] as Array<OneRecipe>);
+        return ingredientInRecipe
+      })
+    }, [] as Array<OneRecipe>)
   }
 
   addRecipe(name: string) {
-    return this.recipeRepository.save({ name: name });
+    return this.recipeRepository.save({ name: name })
   }
 
   removeRecipe(id: number) {
-    return this.recipeRepository.delete({ recipesId: id });
+    return this.recipeRepository.delete({ recipesId: id })
   }
 }

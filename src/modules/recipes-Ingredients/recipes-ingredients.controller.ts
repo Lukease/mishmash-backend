@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, Post, Query } from "@nestjs/common";
-import { RecipesIngredientsService } from "./recipes-ingredients.service";
-import { AddRecipeIngredientsDto, FindOneRecipeIngredientsDto, FindRecipeDto } from "./dto";
-import { RecipeService } from "../recipe/recipe.service";
+import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common'
+import { RecipesIngredientsService } from './recipes-ingredients.service'
+import { AddRecipeIngredientsDto, FindOneRecipeIngredientsDto } from './dto'
+import { RecipeService } from '../recipe/recipe.service'
 
 @Controller('recipesIngredients')
 export class RecipesIngredientsController {
@@ -52,5 +52,4 @@ export class RecipesIngredientsController {
   removeRecipeIngredients(@Query('recipesIngredientsId') recipesIngredientsId: number ) {
     return this.recipesIngredientsService.removeRecipeIngredients(recipesIngredientsId)
   }
-
 }

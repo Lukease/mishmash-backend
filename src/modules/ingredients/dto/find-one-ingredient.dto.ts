@@ -1,4 +1,4 @@
-import { IsAlphanumeric, IsString, MinLength } from "class-validator";
+import { IsAlphanumeric, IsString, MinLength } from 'class-validator'
 
 export class FindOneIngredientDto {
   @IsString()

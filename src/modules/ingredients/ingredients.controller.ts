@@ -1,12 +1,10 @@
-import { Body, Controller, Delete, Get, Patch, Post, Query } from "@nestjs/common";
-import { IngredientsService } from "./ingredients.service"
+import { Body, Controller, Delete, Get, Patch, Post, Query } from '@nestjs/common'
+import { IngredientsService } from './ingredients.service'
 import {
-  AddIngredientDto,
-  RemoveIngredientDto,
   EditIngredientDto,
   FindOneIngredientDto,
   FindByIdIngredientDto
-} from "./dto"
+} from './dto'
 
 @Controller('ingredients')
 export class IngredientsController {

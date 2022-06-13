@@ -1,4 +1,4 @@
-import { IsAlphanumeric, IsNumber, IsString, MaxLength, MinLength } from "class-validator";
+import { IsAlphanumeric, IsNumber, IsString, MaxLength, MinLength } from 'class-validator'
 
 export class EditIngredientDto {
   @IsNumber()

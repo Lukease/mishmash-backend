@@ -62,7 +62,7 @@ export class RecipesIngredientsService {
     const specialRecipes = Array.from(specialRecipesSet)
 
     const searchRecipe = specialRecipes.map(recipes => {
-      const ingredientsArray: Set<number> = new Set();
+      const ingredientsArray: Set<number> = new Set()
       allRecipes.forEach(name => {
         if (recipes === name.recipesId) {
           ingredientsArray.add(name.ingredientsId)
@@ -87,18 +87,18 @@ export class RecipesIngredientsService {
   }
 
   findName(id: number) {
-    return this.recipesIngredientsRepository.findOne({ recipesIngredientsId: id });
+    return this.recipesIngredientsRepository.findOne({ recipesIngredientsId: id })
   }
 
   findRecipeIngredient(recipeId: number) {
-    return this.recipesIngredientsRepository.find({ recipesId: recipeId });
+    return this.recipesIngredientsRepository.find({ recipesId: recipeId })
   }
 
   addRecipeIngredients(recipeId: number, ingredientsId: number) {
-    return this.recipesIngredientsRepository.save({ recipesId: recipeId, ingredientsId: ingredientsId });
+    return this.recipesIngredientsRepository.save({ recipesId: recipeId, ingredientsId: ingredientsId })
   }
 
   removeRecipeIngredients(id: number) {
-    return this.recipesIngredientsRepository.delete({ recipesIngredientsId: id });
+    return this.recipesIngredientsRepository.delete({ recipesIngredientsId: id })
   }
 }

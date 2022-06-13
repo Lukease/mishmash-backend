@@ -1,4 +1,4 @@
-import { Ingredients } from "./ingredients.type";
+import { Ingredients } from './ingredients.type'
 
 export type OneRecipe = {
   recipeId: number,

@@ -1,4 +1,4 @@
-import { IsAlphanumeric, IsNumber, MaxLength } from "class-validator"
+import { IsAlphanumeric, IsNumber, MaxLength } from 'class-validator'
 
 export class FindByIdIngredientDto {
   @IsNumber()
