@@ -1,8 +1,8 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { RecipesIngredients } from "../../lib/entity";
-import { Recipe } from "./recpies";
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { RecipesIngredients } from '../../lib/entity'
+import { Recipe } from './recpies'
 
 @Injectable()
 export class RecipesIngredientsService {
@@ -13,32 +13,32 @@ export class RecipesIngredientsService {
   }
 
   findAll() {
-    return this.recipesIngredientsRepository.find();
+    return this.recipesIngredientsRepository.find()
   }
 
   async findAllRecipes(ingredientsId: Array<number>) {
-    const allRecipes = await this.recipesIngredientsRepository.find();
-    const specialRecipesSet: Set<number> = new Set();
+    const allRecipes = await this.recipesIngredientsRepository.find()
+    const specialRecipesSet: Set<number> = new Set()
 
     allRecipes.forEach(recipe => {
-      specialRecipesSet.add(recipe.recipesId);
+      specialRecipesSet.add(recipe.recipesId)
     })
 
-    const specialRecipes = Array.from(specialRecipesSet);
+    const specialRecipes = Array.from(specialRecipesSet)
 
     const searchRecipe = specialRecipes.map(recipes => {
-      const ingredientsArray: Set<number> = new Set();
+      const ingredientsArray: Set<number> = new Set()
       allRecipes.forEach(name => {
         if (recipes === name.recipesId) {
           ingredientsArray.add(name.ingredientsId)
         }
-      });
+      })
 
       const newIngredientsArray = Array.from(ingredientsArray)
       const newRecipe: Recipe = {
         recipeId: recipes,
         ingredients: newIngredientsArray
-      };
+      }
 
       const correctProducts = newRecipe.ingredients.every((ingredientRecipe) => ingredientsId.toString().includes(ingredientRecipe.toString()));
 
@@ -52,14 +52,14 @@ export class RecipesIngredientsService {
   }
 
   async findOneRecipes(ingredientsId: number) {
-    const allRecipes = await this.recipesIngredientsRepository.find();
-    const specialRecipesSet: Set<number> = new Set();
+    const allRecipes = await this.recipesIngredientsRepository.find()
+    const specialRecipesSet: Set<number> = new Set()
 
     allRecipes.forEach(recipe => {
-      specialRecipesSet.add(recipe.recipesId);
+      specialRecipesSet.add(recipe.recipesId)
     })
 
-    const specialRecipes = Array.from(specialRecipesSet);
+    const specialRecipes = Array.from(specialRecipesSet)
 
     const searchRecipe = specialRecipes.map(recipes => {
       const ingredientsArray: Set<number> = new Set();
