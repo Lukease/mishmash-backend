@@ -1,0 +1,1 @@
+export { RecipeTypeDao } from './recipe.dao'

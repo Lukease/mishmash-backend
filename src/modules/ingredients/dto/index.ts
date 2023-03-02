@@ -1,0 +1,5 @@
+export { AddIngredientDto } from './add-ingredient.dto'
+export { RemoveIngredientDto } from './remove-ingredient.dto'
+export { EditIngredientDto } from './edit-ingredient.dto'
+export { FindOneIngredientDto } from './find-one-ingredient.dto'
+export { FindByIdIngredientDto } from './find-by-id-ingredient.dto'

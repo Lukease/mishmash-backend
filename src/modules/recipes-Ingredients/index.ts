@@ -1,0 +1,1 @@
+export { RecipesIngredientsModule } from './recipes-ingredients.module'
